@@ -4,10 +4,11 @@ import { headers } from "next/headers";
 async function Code({ path }: { path: string }) {
   const headersInstance = headers();
   const baseUrl =
-    process.env.NODE_ENV === "development"
-      ? ""
-      : headersInstance.get(":authority") || headersInstance.get("Host");
-  const code = await fs.readFile(baseUrl + path, "utf-8");
+    headersInstance.get(":authority") || headersInstance.get("Host");
+  const code =
+    process.env.NODE_ENV === "production"
+      ? await fetch(`http://${baseUrl}${path}`).then((res) => res.text())
+      : await fs.readFile(path, "utf-8");
 
   return (
     <div className="rounded-lg bg-teal-950 p-5">
