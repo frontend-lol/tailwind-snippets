@@ -6,7 +6,7 @@ async function Code({ path }: { path: string }) {
   const baseUrl =
     process.env.NODE_ENV === "development"
       ? ""
-      : headersInstance.get(":authority:");
+      : headersInstance.get(":authority") || headersInstance.get("Host");
   const code = await fs.readFile(baseUrl + path, "utf-8");
 
   return (
