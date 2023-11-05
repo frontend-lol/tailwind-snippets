@@ -2,7 +2,7 @@ import React from "react";
 import { promises as fs } from "fs";
 
 async function Code({ path }: { path: string }) {
-  const code = await fs.readFile(process.cwd() + path, "utf-8");
+  const code = await fs.readFile(path, "utf-8");
 
   return (
     <div className="rounded-lg bg-teal-950 p-5">

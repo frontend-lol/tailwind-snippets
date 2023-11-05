@@ -12,7 +12,10 @@ export const snippets: Snippet[] = [
     id: "navigation-link-1",
     title: "Navigation Link",
     tags: ["navigation", "link"],
-    codePath: "./data/templates/NavLink1.tsx",
+    codePath:
+      process.env.NODE_ENV === "development"
+        ? "./data/templates/NavLink1.tsx"
+        : "./templates/NavLink1.tsx",
     jsx: NavLink1,
   },
 ];
