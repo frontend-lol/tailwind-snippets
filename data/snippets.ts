@@ -15,7 +15,7 @@ export const snippets: Snippet[] = [
     codePath:
       process.env.NODE_ENV === "development"
         ? "./data/templates/NavLink1.tsx"
-        : "./templates/NavLink1.tsx",
+        : "/templates/NavLink1.tsx",
     jsx: NavLink1,
   },
 ];

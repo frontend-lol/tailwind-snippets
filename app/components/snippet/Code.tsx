@@ -1,8 +1,13 @@
 import React from "react";
 import { promises as fs } from "fs";
-
+import { headers } from "next/headers";
 async function Code({ path }: { path: string }) {
-  const code = await fs.readFile(path, "utf-8");
+  const headersInstance = headers();
+  const baseUrl =
+    process.env.NODE_ENV === "development"
+      ? ""
+      : headersInstance.get(":authority:");
+  const code = await fs.readFile(baseUrl + path, "utf-8");
 
   return (
     <div className="rounded-lg bg-teal-950 p-5">
