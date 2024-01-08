@@ -3,7 +3,7 @@ import React from "react";
 import Code from "~/app/components/snippet/Code";
 import Output from "~/app/components/snippet/Output";
 import { snippets } from "~/data/snippets";
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 export async function generateStaticParams() {
   return snippets.map((s) => ({ params: { snippetId: s.id } }));
 }
