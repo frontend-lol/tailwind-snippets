@@ -3,6 +3,10 @@ import React from "react";
 import Code from "~/app/components/snippet/Code";
 import Output from "~/app/components/snippet/Output";
 import { snippets } from "~/data/snippets";
+
+export async function generateStaticParams() {
+  return snippets.map((s) => ({ params: { snippetId: s.id } }));
+}
 export default function Page({ params }: { params: { snippetId: string } }) {
   const snippet = snippets.find((s) => s.id === params.snippetId);
   if (!snippet) {
